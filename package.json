@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npm run copy-ort-assets",
+    "prebuild": "npm run copy-ort-assets",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "copy-ort-assets": "node scripts/copy-ort-assets.mjs"
   },
   "dependencies": {
     "react": "19.1.0",

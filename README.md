@@ -33,14 +33,14 @@ npm install
 3. Add your trained ONNX model
    - Place your `mnist_cnn.onnx` file in `public/models/`
 
-4. Run the development server (this will copy the ONNX Runtime wasm + mjs files into `public/ort/` automatically)
+4. Run the development server (this triggers a pre-step that copies the ONNX Runtime wasm + mjs files into `public/ort/` automatically)
 ```bash
 npm run dev
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-   - The app serves the ONNX Runtime assets from `/ort/`. If you upgrade `onnxruntime-web`, restart the dev server so the fresh artifacts are copied across.
+   - The app serves the ONNX Runtime assets from `/ort/`. If you upgrade `onnxruntime-web`, restart the dev server (or run `npm run copy-ort-assets`) so the fresh artifacts are copied across.
 
 ## How It Works
 
