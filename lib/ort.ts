@@ -2,7 +2,7 @@ import * as ort from "onnxruntime-web";
 
 export async function loadSession(modelPath = "/models/mnist_cnn.onnx") {
   // Configure ONNX Runtime for web deployment
-  ort.env.wasm.wasmPaths = "/";
+  ort.env.wasm.wasmPaths = "/ort/";
   ort.env.wasm.numThreads = 1;
   ort.env.wasm.simd = true;
 

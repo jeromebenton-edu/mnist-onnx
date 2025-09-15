@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { preprocessTo28x28 } from "@/lib/preprocess";
 import { loadSession, run } from "@/lib/ort";
 import type * as ort from "onnxruntime-web";
+import Image from "next/image";
 
 export default function Page() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -83,7 +84,18 @@ export default function Page() {
       </section>
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Model input (28×28, upscaled)</h2>
-        {previewURL ? <img src={previewURL} alt="preview" className="border rounded-md shadow"/> : <div className="h-[560px] border rounded-md grid place-items-center text-gray-500">no preview yet</div>}
+        {previewURL ? (
+          <Image
+            src={previewURL}
+            alt="preview"
+            width={560}
+            height={560}
+            className="border rounded-md shadow"
+            unoptimized
+          />
+        ) : (
+          <div className="h-[560px] border rounded-md grid place-items-center text-gray-500">no preview yet</div>
+        )}
         <div className="text-lg">Prediction: <b>{pred}</b> <span className="text-gray-600">({conf})</span></div>
       </section>
     </main>

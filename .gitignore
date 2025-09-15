@@ -9,6 +9,7 @@ coverage/
 # Next.js
 .next/
 out/
+public/ort/
 
 # Production
 build/
