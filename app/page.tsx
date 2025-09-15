@@ -52,6 +52,7 @@ export default function Page() {
 
     let drawing = false;
     const start = (e: PointerEvent) => {
+      e.preventDefault();
       drawing = true;
       ctx.beginPath();
       ctx.moveTo(e.offsetX, e.offsetY);
@@ -59,12 +60,14 @@ export default function Page() {
     };
     const move = (e: PointerEvent) => {
       if (!drawing) return;
+      e.preventDefault();
       ctx.lineWidth = brushRef.current;
       ctx.strokeStyle = colorRef.current;
       ctx.lineTo(e.offsetX, e.offsetY);
       ctx.stroke();
     };
-    const end = () => {
+    const end = (e: PointerEvent) => {
+      e.preventDefault();
       drawing = false;
     };
 
@@ -165,7 +168,7 @@ export default function Page() {
                   ref={canvasRef}
                   width={560}
                   height={560}
-                  className="h-full w-full rounded-lg bg-white"
+                  className="h-full w-full rounded-lg bg-white touch-none"
                 />
                 {!hasDrawn && (
                   <div className="pointer-events-none absolute inset-0 grid place-items-center text-sm font-medium text-slate-500">
